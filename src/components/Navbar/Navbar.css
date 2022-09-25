@@ -1,0 +1,59 @@
+.nav-container {
+  margin-top: 25px;
+  position: relative;
+}
+
+.nav-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav-logo {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.title-1 {
+  color: var(--title-color);
+}
+
+.title-2 {
+  color: var(--primary-color);
+}
+
+.navigation-links {
+  display: flex;
+  font-size: 1.3rem;
+}
+
+.nav-link {
+  color: var(--navbar-links);
+  margin: 0 2rem;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.nav-link:hover {
+  color: var(--title-color);
+  font-weight: 500;
+}
+
+.btn-sign-in {
+  padding: 0.6rem 1.5rem;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+.btn-sign-in:hover {
+  background: var(--primary-hover);
+}
+
+a {
+  text-decoration: none;
+}
