@@ -1,0 +1,45 @@
+.hcard {
+  height: 240px;
+  width: 427px;
+}
+
+.hcard-img {
+  height: 240px;
+  width: 427px;
+  object-fit: fill;
+  border-radius: 10px;
+  /* opacity: 0.8; */
+}
+
+.bg-linear {
+  position: relative;
+  height: 200px;
+  bottom: 12rem;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(20, 20, 20, 0),
+    rgba(20, 20, 20, 1)
+  );
+}
+
+.movie-info {
+  color: var(--title-color);
+  position: relative;
+  top: 5.5rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.play-btn {
+  position: relative;
+  left: -8px;
+  bottom: -3px;
+  font-size: 2.5rem;
+  margin-bottom: 3px;
+}
+
+.hcard-title {
+  position: relative;
+  bottom: 2px;
+}

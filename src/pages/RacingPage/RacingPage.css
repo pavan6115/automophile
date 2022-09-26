@@ -1,0 +1,17 @@
+.racing-container {
+    min-height: 73vh;
+    margin-top: 3rem;
+}
+
+.racing-title{
+    margin-top: 2rem;
+    margin-left: 3rem;
+    color: var(--title-color);
+}
+
+.racing-card-container {
+    margin: 1rem 3rem 4rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
