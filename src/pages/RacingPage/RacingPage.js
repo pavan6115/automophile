@@ -1,33 +1,35 @@
 import React from 'react'
-import racingpicsum from '../../assets/racingpicsum.jpeg'
 import { Footer, HCard, Navbar } from '../../components'
+import { useData } from '../../context/data/data-context'
+import { PageTitle } from '../../hooks/PageTitle/PageTitle'
 import './RacingPage.css'
 
 export const RacingPage = () => {
+  const { videosState } = useData()
+
+  const racingDB = videosState.videos[2][1]
+
+  PageTitle('Racing | Automophile')
+
   return (
     <div>
-    <Navbar />
-    <div className='racing-container'>
-      <h2 className='racing-title'>Racing</h2>
-      <div className='racing-card-container'>
-        <HCard
-          thumbnail={racingpicsum}
-          title={'Formula 1 Explained | For rookies'}
-          time={'15 min '}
-        />
-        <HCard
-          thumbnail={racingpicsum}
-          title={'Formula 1 Explained | For rookies'}
-          time={'15 min '}
-        />
-        <HCard
-          thumbnail={racingpicsum}
-          title={'Formula 1 Explained | For rookies'}
-          time={'15 min '}
-        />
+      <Navbar />
+      <div className='racing-container'>
+        <h2 className='racing-title'>Racing</h2>
+        <div className='racing-card-container'>
+          {racingDB.map((race) => {
+            return (
+              <HCard
+                thumbnail={race.thumbnail}
+                title={race.title}
+                time={race.duration}
+                data={race}
+              />
+            )
+          })}
+        </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-  ) 
+  )
 }
