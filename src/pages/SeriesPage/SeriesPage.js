@@ -1,65 +1,61 @@
 import React from 'react'
-import seriespicsum from '../../assets/seriespicsum.jpeg'
-import seriespicsum2 from '../../assets/seriespicsum2.jpeg'
 import { Footer, HCard, Navbar } from '../../components'
+import { useData } from '../../context/data/data-context'
+import { PageTitle } from '../../hooks/PageTitle/PageTitle'
 import './SeriesPage.css'
 
 export const SeriesPage = () => {
+  const { videosState } = useData()
+
+  const carsSeriesDB = videosState.videos[1][1][0]
+  const ffSeriesDB = videosState.videos[1][1][1]
+  const ti24DB = videosState.videos[1][1][2]
+
+  PageTitle('Series | Automophile')
+
   return (
     <div>
       <Navbar />
       <div className='series-container'>
         <h2 className='series-title'>Series</h2>
-        <h3 className="series-title">Cars</h3>
+        <h3 className='series-title'>Cars</h3>
         <div className='series-card-container'>
-          <HCard
-            thumbnail={seriespicsum}
-            title={'Cars'}
-            time={'1 hr 57 min'}
-          />
-          <HCard
-            thumbnail={seriespicsum}
-            title={'Cars'}
-            time={'1 hr 57 min'}
-          />
-          <HCard
-            thumbnail={seriespicsum}
-            title={'Cars'}
-            time={'1 hr 57 min'}
-          />
+          {carsSeriesDB.map((car) => {
+            return (
+              <HCard
+                thumbnail={car.thumbnail}
+                title={car.title}
+                time={car.duration}
+                data={car}
+              />
+            )
+          })}
         </div>
-        <h3 className="series-title">Fast & Furious</h3>
+        <h3 className='series-title'>Fast & Furious</h3>
         <div className='series-card-container'>
-          <HCard
-            thumbnail={seriespicsum2}
-            title={'Fast and Furious'}
-            time={'2 hr 22 min'}
-          />
-          <HCard
-            thumbnail={seriespicsum2}
-            title={'Fast and Furious'}
-            time={'2 hr 22 min'}
-          />
-          <HCard
-            thumbnail={seriespicsum2}
-            title={'Fast and Furious'}
-            time={'2 hr 22 min'}
-          />
-                    <HCard
-            thumbnail={seriespicsum2}
-            title={'Fast and Furious'}
-            time={'2 hr 22 min'}
-          />
-          <HCard
-            thumbnail={seriespicsum2}
-            title={'Fast and Furious'}
-            time={'2 hr 22 min'}
-          />
-          <HCard
-            thumbnail={seriespicsum2}
-            title={'Fast and Furious'}
-            time={'2 hr 22 min'}
-          />
+          {ffSeriesDB.map((serial) => {
+            return (
+              <HCard
+                thumbnail={serial.thumbnail}
+                title={serial.title}
+                time={serial.duration}
+                data={serial}
+              />
+            )
+          })}
+        </div>
+        <h3 className='series-title'>Truth in 24</h3>
+        <div className='series-card-container'>
+          {ti24DB.map((serial) => {
+            return (
+              <HCard
+                thumbnail={serial.thumbnail}
+                title={serial.title}
+                time={serial.duration}
+                data={serial}
+              />
+            )
+          })}
         </div>
       </div>
       <Footer />

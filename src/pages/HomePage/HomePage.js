@@ -1,20 +1,30 @@
 import React, { useRef, useState } from 'react'
-import picsum from '../../assets/picsum.jpg'
-import spicsum from '../../assets/spicsum.jpeg'
-import rapicsum from '../../assets/rapicsum.jpeg'
-import repicsum from '../../assets/repicsum.jpeg'
+import { useNavigate } from 'react-router-dom'
 import { Footer } from '../../components/Footer/Footer'
 import { Navbar } from '../../components/Navbar/Navbar'
 import { VCard } from '../../components/VerticalCard/VCard'
+import { useData } from '../../context/data/data-context'
+import { PageTitle } from '../../hooks/PageTitle/PageTitle'
 import './HomePage.css'
 
 export const HomePage = () => {
   const [isCardMoved, setIsCardMoved] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
   const movieContainerRef = useRef()
-  const seriesContainerRef = useRef()
   const racingContainerRef = useRef()
-  const reviewContainerRef = useRef()
+  const navigate = useNavigate()
+
+  PageTitle('Automophile | Haus of Autoculture')
+
+  // context
+  const { videosState } = useData()
+  const videosCollection = videosState.videos
+
+  // db
+  const moviesData = videosCollection[0][0]
+  const seriesData = videosCollection[1][0]
+  const racingData = videosCollection[2][0]
+  const reviewsData = videosCollection[3][0]
 
   const movieHandleScroll = (direction) => {
     setIsScrolled(true)
@@ -37,27 +47,6 @@ export const HomePage = () => {
     }
   }
 
-  const seriesHandleScroll = (direction) => {
-    setIsScrolled(true)
-    // @ts-ignore
-    let distance = seriesContainerRef.current.getBoundingClientRect().x - 45
-    if (direction === 'left' && isCardMoved > 0) {
-      setIsCardMoved((isCardMoved) => isCardMoved - 1)
-      // @ts-ignore
-      seriesContainerRef.current.style.transform = `translateX(${
-        228 + distance
-      }px)`
-    }
-
-    if (direction === 'right' && isCardMoved < 6) {
-      setIsCardMoved((isCardMoved) => isCardMoved + 1)
-      // @ts-ignore
-      seriesContainerRef.current.style.transform = `translateX(${
-        -228 + distance
-      }px)`
-    }
-  }
-
   const racingHandleScroll = (direction) => {
     setIsScrolled(true)
     // @ts-ignore
@@ -74,27 +63,6 @@ export const HomePage = () => {
       setIsCardMoved((isCardMoved) => isCardMoved + 1)
       // @ts-ignore
       racingContainerRef.current.style.transform = `translateX(${
-        -228 + distance
-      }px)`
-    }
-  }
-
-  const reviewHandleScroll = (direction) => {
-    setIsScrolled(true)
-    // @ts-ignore
-    let distance = reviewContainerRef.current.getBoundingClientRect().x - 45
-    if (direction === 'left' && isCardMoved > 0) {
-      setIsCardMoved((isCardMoved) => isCardMoved - 1)
-      // @ts-ignore
-      reviewContainerRef.current.style.transform = `translateX(${
-        228 + distance
-      }px)`
-    }
-
-    if (direction === 'right' && isCardMoved < 6) {
-      setIsCardMoved((isCardMoved) => isCardMoved + 1)
-      // @ts-ignore
-      reviewContainerRef.current.style.transform = `translateX(${
         -228 + distance
       }px)`
     }
@@ -125,19 +93,20 @@ export const HomePage = () => {
           >
             arrow_back_ios
           </span>
-          <div className='category-cards' ref={movieContainerRef}>
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
-            <VCard thumbnail={picsum} title={'Ford vs Ferrari'} />
+          <div
+            className='category-cards'
+            ref={movieContainerRef}
+            onClick={() => navigate('/movies')}
+          >
+            {moviesData.map((movie) => {
+              return (
+                <VCard
+                  key={movie._id}
+                  thumbnail={movie.coverImg}
+                  title={movie.title}
+                />
+              )
+            })}
           </div>
           <span
             className='material-symbols-outlined arrow movie-right-abs'
@@ -151,33 +120,17 @@ export const HomePage = () => {
 
         <div className='category-series'>
           <div className='category-name'>Series</div>
-          <span
-            className='material-symbols-outlined arrow series-left-abs'
-            onClick={() => seriesHandleScroll('left')}
-            style={{ display: !isScrolled && 'none' }}
-          >
-            arrow_back_ios
-          </span>
-          <div className='category-cards' ref={seriesContainerRef}>
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
-            <VCard thumbnail={spicsum} title={'Cars'} />
+          <div className='category-cards' onClick={() => navigate('/series')}>
+            {seriesData.map((serial) => {
+              return (
+                <VCard
+                  key={serial._id}
+                  thumbnail={serial.coverImg}
+                  title={serial.title}
+                />
+              )
+            })}
           </div>
-          <span
-            className='material-symbols-outlined arrow series-right-abs'
-            onClick={() => seriesHandleScroll('right')}
-          >
-            arrow_forward_ios
-          </span>
         </div>
 
         <div className='space'></div>
@@ -191,19 +144,20 @@ export const HomePage = () => {
           >
             arrow_back_ios
           </span>
-          <div className='category-cards' ref={racingContainerRef}>
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
-            <VCard thumbnail={rapicsum} title={'Formula 1'} />
+          <div
+            className='category-cards'
+            ref={racingContainerRef}
+            onClick={() => navigate('/racing')}
+          >
+            {racingData.map((race) => {
+              return (
+                <VCard
+                  key={race._id}
+                  thumbnail={race.coverImg}
+                  title={race.title}
+                />
+              )
+            })}
           </div>
           <span
             className='material-symbols-outlined arrow racing-right-abs'
@@ -217,34 +171,17 @@ export const HomePage = () => {
 
         <div className='category-reviews'>
           <div className='category-name'>Reviews</div>
-          <span
-            className='material-symbols-outlined arrow reviews-left-abs'
-            onClick={() => reviewHandleScroll('left')}
-            style={{ display: !isScrolled && 'none' }}
-          >
-            arrow_back_ios
-          </span>
-          <div className='category-cards' ref={reviewContainerRef}>
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
-            <VCard thumbnail={repicsum} title={'Volkswagen'} />
+          <div className='category-cards' onClick={() => navigate('/reviews')}>
+            {reviewsData.map((review) => {
+              return (
+                <VCard
+                  key={review._id}
+                  thumbnail={review.coverImg}
+                  title={review.title}
+                />
+              )
+            })}
           </div>
-          <span
-            className='material-symbols-outlined arrow reviews-right-abs'
-            onClick={() => reviewHandleScroll('right')}
-          >
-            arrow_forward_ios
-          </span>
         </div>
       </div>
       <Footer />

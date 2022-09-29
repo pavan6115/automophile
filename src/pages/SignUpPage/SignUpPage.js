@@ -1,8 +1,11 @@
 import React from 'react'
-import './SignUpPage.css'
 import { Link } from 'react-router-dom'
+import { PageTitle } from '../../hooks/PageTitle/PageTitle'
+import './SignUpPage.css'
 
 export const SignUpPage = () => {
+  PageTitle('Signup | Automophile')
+
   return (
     <div>
       <div className='wrapper'>
@@ -19,7 +22,7 @@ export const SignUpPage = () => {
             </div>
             <div className='signup-controls'>
               <div className='signup-inputs'>
-              <input
+                <input
                   type='text'
                   name='fName'
                   id='fName'
