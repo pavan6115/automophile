@@ -1,4 +1,5 @@
 export { Footer } from './Footer/Footer'
 export { HCard } from './HorizontalCard/HCard'
 export { Navbar } from './Navbar/Navbar'
+export { RequireAuth } from './PrivateRoute/RequireAuth'
 export { VCard } from './VerticalCard/VCard'
