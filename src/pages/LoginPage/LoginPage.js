@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { PageTitle } from '../../hooks/PageTitle/PageTitle'
 import './LoginPage.css'
 
 export const LoginPage = () => {
+  PageTitle('Login | Automophile')
+
   return (
     <div>
       <div className='wrapper'>
