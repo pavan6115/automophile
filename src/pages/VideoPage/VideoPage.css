@@ -1,0 +1,43 @@
+.player-container {
+  height: 80vh;
+}
+
+.video-info {
+  margin: 2rem;
+  width: 65%;
+}
+
+.v-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--title-color);
+}
+
+.v-description {
+  font-size: 1rem;
+  margin: 0.8rem 0rem;
+  color: var(--grey-color);
+}
+
+.toggles {
+  margin: 2rem;
+  color: var(--navbar-links);
+}
+
+.playlist-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.icon {
+  font-size: 1.8rem;
+  position: relative;
+  left: 28px;
+  cursor: pointer;
+}
+
+.txt-toggle {
+  font-weight: 300;
+}
