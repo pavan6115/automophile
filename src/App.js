@@ -10,6 +10,7 @@ import {
   ReviewPage,
   SeriesPage,
   SignUpPage,
+  VideoPage,
 } from './pages'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<HomePage />}></Route>
+        <Route path='/video/:videoId' element={<VideoPage />}></Route>
         <Route path='/movies' element={<MoviePage />}></Route>
         <Route path='/series' element={<SeriesPage />}></Route>
         <Route path='/racing' element={<RacingPage />}></Route>
