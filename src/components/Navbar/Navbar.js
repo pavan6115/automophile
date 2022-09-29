@@ -1,8 +1,14 @@
 import React from 'react'
+import { AiOutlineUser } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/auth/auth-context'
 import './Navbar.css'
 
 export const Navbar = () => {
+  const {
+    user: { token },
+  } = useAuth()
+
   return (
     <div className='nav-container'>
       <div className='nav-heading'>
@@ -38,9 +44,15 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className='nav-auth'>
-          <Link to='/login'>
-            <button className='btn-sign-in'>Login</button>
-          </Link>
+          {!token ? (
+            <Link to='/login'>
+              <button className='btn-sign-in'>Login</button>
+            </Link>
+          ) : (
+            <Link to='/userprofile'>
+              <AiOutlineUser className='user-icon' />
+            </Link>
+          )}
         </div>
       </div>
     </div>
