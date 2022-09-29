@@ -54,6 +54,16 @@
   background: var(--primary-hover);
 }
 
+.user-icon {
+  color: var(--primary-color);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.user-icon:hover {
+  color: var(--primary-hover);
+}
+
 a {
   text-decoration: none;
 }
