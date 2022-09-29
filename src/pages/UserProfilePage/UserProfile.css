@@ -1,0 +1,78 @@
+.user-profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+}
+
+.user-img {
+  height: 120px;
+}
+
+.user-info {
+  margin: 1rem 0rem;
+  width: 100%;
+  text-align: center;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  color: var(--title-color);
+}
+
+.subscription-validity {
+  margin-top: 2px;
+  font-size: 0.93rem;
+  font-weight: 300;
+  color: var(--grey-color);
+}
+
+.upgrade-validity {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn-upgrade-validity {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  color: var(--title-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.route-links {
+  background-color: var(--grey-fade);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.route {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  cursor: pointer;
+  color: var(--navbar-links);
+}
+
+.route-icon {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.border {
+  border-top: 2px solid var(--black-bg);
+  border-bottom: 2px solid var(--black-bg);
+}
