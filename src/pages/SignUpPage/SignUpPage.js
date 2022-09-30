@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/auth/auth-context'
 import { PageTitle } from '../../hooks/PageTitle/PageTitle'
 import './SignUpPage.css'
 
+const toastSignUp = () => toast.success('Signup Successful ✅')
+
 export const SignUpPage = () => {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const { signup } = useAuth()
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    signup(email, password, firstName, lastName)
+    toastSignUp()
+  }
+
   PageTitle('Signup | Automophile')
 
   return (
@@ -15,7 +32,7 @@ export const SignUpPage = () => {
             <span className='title-2'>mophile</span>
           </Link>
         </div>
-        <form action='' className='signup-box'>
+        <form onSubmit={submitHandler} className='signup-box'>
           <div className='signup-container'>
             <div className='signup-heading'>
               <div className='signup-title'>Sign Up</div>
@@ -29,6 +46,7 @@ export const SignUpPage = () => {
                   className='credentials'
                   placeholder='First Name'
                   autoComplete='off'
+                  onChange={(e) => setFirstName(e.target.value)}
                   required
                 />
                 <input
@@ -38,6 +56,7 @@ export const SignUpPage = () => {
                   className='credentials'
                   placeholder='Last Name'
                   autoComplete='off'
+                  onChange={(e) => setLastName(e.target.value)}
                   required
                 />
                 <input
@@ -47,6 +66,7 @@ export const SignUpPage = () => {
                   className='credentials'
                   placeholder='E-mail'
                   autoComplete='off'
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
                 <input
@@ -56,6 +76,7 @@ export const SignUpPage = () => {
                   className='credentials'
                   placeholder='Password'
                   autoComplete='off'
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
