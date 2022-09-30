@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { BsArrowRightCircleFill } from 'react-icons/bs'
-import { RiUserShared2Line } from 'react-icons/ri'
+import { RiUserShared2Fill } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 import userAvatar from '../../assets/userAvatar.png'
 import { Footer, Navbar } from '../../components'
 import { useAuth } from '../../context/auth/auth-context'
+import { PageTitle } from '../../hooks/PageTitle/PageTitle'
 import './UserProfile.css'
 
 export const UserProfile = () => {
@@ -23,6 +25,8 @@ export const UserProfile = () => {
       icon: '🎊',
     })
   }
+
+  PageTitle('User Profile | Automophile')
 
   return (
     <div>
@@ -46,17 +50,21 @@ export const UserProfile = () => {
             </button>
           </div>
           <div className='route-links'>
-            <div className='route'>
-              <div>Watchlist</div>
-              <BsArrowRightCircleFill className='route-icon' />
-            </div>
-            <div className='route border'>
-              <div>History</div>
-              <BsArrowRightCircleFill className='route-icon' />
-            </div>
+            <Link to='/my-watchlist'>
+              <div className='route'>
+                <div>Watchlist</div>
+                <BsArrowRightCircleFill className='route-icon' />
+              </div>
+            </Link>
+            <Link to='/my-history'>
+              <div className='route border'>
+                <div>History</div>
+                <BsArrowRightCircleFill className='route-icon' />
+              </div>
+            </Link>
             <div className='route' onClick={logout}>
               <div>Logout</div>
-              <RiUserShared2Line className='route-icon' />
+              <RiUserShared2Fill className='route-icon' />
             </div>
           </div>
         </div>
