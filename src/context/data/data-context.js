@@ -8,7 +8,8 @@ const DataContext = createContext()
 const initialVideoState = {
   videos: [],
   watchlist: [],
-  videoData: []
+  videoData: [],
+  history: [],
 }
 
 const DataProvider = ({ children }) => {
