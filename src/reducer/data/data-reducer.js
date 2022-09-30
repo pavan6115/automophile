@@ -7,7 +7,7 @@ const videoReducer = (state, action) => {
           ...action.payload.map((video) => ({
             ...video,
             isInHistory: false,
-            isInLiked: false,
+            isInWatchlist: false,
           })),
         ],
       }
@@ -16,6 +16,25 @@ const videoReducer = (state, action) => {
       return {
         ...state,
         videoData: [{ ...action.payload }],
+        history: [...state.history, { ...action.payload }],
+      }
+
+    case 'ADD_TO_WATCHLIST':
+      return {
+        ...state,
+        watchlist: [...state.watchlist, action.payload],
+      }
+
+    case 'CLEAR_WATCHLIST':
+      return {
+        ...state,
+        watchlist: [],
+      }
+
+    case 'CLEAR_HISTORY':
+      return {
+        ...state,
+        history: [],
       }
 
     default:

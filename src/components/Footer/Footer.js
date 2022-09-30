@@ -24,8 +24,12 @@ export const Footer = () => {
           </div>
           <div className='footer-socials'>
             <ul className='social-links'>
-              <AiFillGithub />
-              <FaParking />
+              <a href='https://github.com/pavan6115' target='_blank'>
+                <AiFillGithub />
+              </a>
+              <a href='https://peerlist.io/kpavan' target='_blank'>
+                <FaParking />
+              </a>
             </ul>
           </div>
         </div>

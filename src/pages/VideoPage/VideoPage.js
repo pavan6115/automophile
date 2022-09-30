@@ -1,4 +1,5 @@
 import React from 'react'
+import { toast } from 'react-hot-toast'
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 import { CgPlayListAdd } from 'react-icons/cg'
 import ReactPlayer from 'react-player'
@@ -8,9 +9,14 @@ import { PageTitle } from '../../hooks/PageTitle/PageTitle'
 import './VideoPage.css'
 
 export const VideoPage = () => {
-  const { videosState } = useData()
+  const { videosState, dispatchVideos } = useData()
   const videoID = videosState.videoData[0]._id
   const videoInfo = videosState.videoData
+
+  const addToWatchlist = (info) => {
+    dispatchVideos({ type: 'ADD_TO_WATCHLIST', payload: info })
+    toast.success('Added to Watchlist 🎬')
+  }
 
   PageTitle(`${videoInfo[0].title} | Automophile`)
 
@@ -36,7 +42,10 @@ export const VideoPage = () => {
         })}
       </div>
       <div className='toggles'>
-        <div className='playlist-toggle'>
+        <div
+          className='playlist-toggle'
+          onClick={() => addToWatchlist(...videoInfo)}
+        >
           <div>
             <CgPlayListAdd className='icon' />
           </div>
