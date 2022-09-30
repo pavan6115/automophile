@@ -22,12 +22,10 @@ const AuthProvider = ({ children }) => {
   //   services
   const login = async (email, password) => {
     try {
-      console.log('inside try')
       const loginResponse = await axios.post(`/api/auth/login`, {
         email,
         password,
       })
-      console.log('response ', loginResponse)
       if (loginResponse.status === 200) {
         const userProfile = {
           token: loginResponse.data.encodedToken,
