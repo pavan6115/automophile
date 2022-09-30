@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import { RequireAuth } from './components'
 import {
+  History,
   HomePage,
   LoginPage,
   MoviePage,
@@ -14,6 +15,7 @@ import {
   SignUpPage,
   UserProfile,
   VideoPage,
+  Watchlist,
 } from './pages'
 
 function App() {
@@ -62,6 +64,22 @@ function App() {
           element={
             <RequireAuth>
               <ReviewPage />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path='/my-watchlist'
+          element={
+            <RequireAuth>
+              <Watchlist />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path='/my-history'
+          element={
+            <RequireAuth>
+              <History />
             </RequireAuth>
           }
         ></Route>
