@@ -9,7 +9,7 @@ export const HCard = ({ thumbnail, title, time, data }) => {
   const navigate = useNavigate()
 
   const sendData = (info) => {
-    dispatchVideos({ type: 'DATA', payload: info})
+    dispatchVideos({ type: 'DATA', payload: info })
     navigate(`/video/${info._id}`)
   }
 
