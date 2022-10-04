@@ -19,6 +19,7 @@
 - Seperate Row for each category
 - Individual Video Page
 - Add to Watchlist
+- History Page
 - Authentication
   - Sign Up
   - Login
