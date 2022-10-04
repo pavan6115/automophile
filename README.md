@@ -1,5 +1,28 @@
-## Video Library Backend
+<div align='center'>
+<h1>Automophile</h1>
+<h4>Streaming Platform for autoculture</h4>
+</div>
 
-This folder contains the Mock Backend created for Video Library App. It contains different API end-points and database configuration for building Video Library; so that you can focus on building Frontend.
+## Automophile
 
-[dev branch]
+- Automophile is a video library or a streaming platform where you can stream content related to movies, series, reviews and racing content.
+
+## TechStack Used :
+
+- ReactJS
+- Context API + useReducer
+- React Router v6
+
+## Features :
+
+- Home Page
+- Seperate Row for each category
+- Individual Video Page
+- Add to Watchlist
+- Authentication
+  - Sign Up
+  - Login
+
+## Demo
+
+[Preview](https://automophile.vercel.app/)
